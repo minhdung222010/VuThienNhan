@@ -31,9 +31,14 @@
       <div class="container">
         <p class="boi-hero__kicker">🔮 Quán bói của Thầy Nhân</p>
         <h1 class="boi-hero__title">Xem Bói Trực Tuyến</h1>
+        <p class="boi-hero__sub">
+          Nhập thông tin của bạn, chọn lĩnh vực muốn xem, rồi để Thầy "lắc quẻ" cho!
+          Cùng một thông tin sẽ cho ra một lá số cố định — đúng chất nhân tướng học.
+        </p>
 
         <!-- Nhân vật 3D thầy bói (mắt nhìn theo chuột) -->
-        <div class="mage-wrap" aria-hidden="true">
+        <div class="mage-wrap" id="mage-wrap" aria-hidden="true">
+          <div class="mage-speech" id="mage-speech" hidden></div>
           <svg class="mage" viewBox="0 0 260 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Thầy bói 3D">
             <defs>
               <radialGradient id="auraG" cx="50%" cy="45%" r="50%">
@@ -168,33 +173,71 @@
 
           <fieldset class="boi-areas">
             <legend class="boi-field__label">Chọn lĩnh vực muốn xem <span class="req">*</span></legend>
-            <div class="boi-areas__grid">
-              <label class="boi-area">
-                <input type="checkbox" name="area" value="tinh-duyen" />
-                <span class="boi-area__box"><span class="boi-area__icon">💕</span><span class="boi-area__name">Tình duyên</span></span>
-              </label>
-              <label class="boi-area">
-                <input type="checkbox" name="area" value="su-nghiep" />
-                <span class="boi-area__box"><span class="boi-area__icon">💼</span><span class="boi-area__name">Sự nghiệp</span></span>
-              </label>
-              <label class="boi-area">
-                <input type="checkbox" name="area" value="duong-doi" />
-                <span class="boi-area__box"><span class="boi-area__icon">🛤️</span><span class="boi-area__name">Đường đời</span></span>
-              </label>
-              <label class="boi-area">
-                <input type="checkbox" name="area" value="tai-loc" />
-                <span class="boi-area__box"><span class="boi-area__icon">💰</span><span class="boi-area__name">Tài lộc</span></span>
-              </label>
-              <label class="boi-area">
-                <input type="checkbox" name="area" value="suc-khoe" />
-                <span class="boi-area__box"><span class="boi-area__icon">🌿</span><span class="boi-area__name">Sức khỏe</span></span>
-              </label>
+            <div class="boi-slider" id="boi-slider">
+              <button type="button" class="boi-slider__nav boi-slider__nav--prev" id="boi-prev" aria-label="Lĩnh vực trước">‹</button>
+              <div class="boi-slider__viewport" id="boi-viewport">
+                <div class="boi-slider__track" id="boi-track">
+                  <label class="boi-slide">
+                    <input type="checkbox" name="area" value="tinh-duyen" />
+                    <span class="boi-slide__box">
+                      <span class="boi-slide__icon">💕</span>
+                      <span class="boi-slide__name">Tình duyên</span>
+                      <span class="boi-slide__check">✓ Đã chọn</span>
+                    </span>
+                  </label>
+                  <label class="boi-slide">
+                    <input type="checkbox" name="area" value="su-nghiep" />
+                    <span class="boi-slide__box">
+                      <span class="boi-slide__icon">💼</span>
+                      <span class="boi-slide__name">Sự nghiệp</span>
+                      <span class="boi-slide__check">✓ Đã chọn</span>
+                    </span>
+                  </label>
+                  <label class="boi-slide">
+                    <input type="checkbox" name="area" value="duong-doi" />
+                    <span class="boi-slide__box">
+                      <span class="boi-slide__icon">🛤️</span>
+                      <span class="boi-slide__name">Đường đời</span>
+                      <span class="boi-slide__check">✓ Đã chọn</span>
+                    </span>
+                  </label>
+                  <label class="boi-slide">
+                    <input type="checkbox" name="area" value="tai-loc" />
+                    <span class="boi-slide__box">
+                      <span class="boi-slide__icon">💰</span>
+                      <span class="boi-slide__name">Tài lộc</span>
+                      <span class="boi-slide__check">✓ Đã chọn</span>
+                    </span>
+                  </label>
+                  <label class="boi-slide">
+                    <input type="checkbox" name="area" value="suc-khoe" />
+                    <span class="boi-slide__box">
+                      <span class="boi-slide__icon">🌿</span>
+                      <span class="boi-slide__name">Sức khỏe</span>
+                      <span class="boi-slide__check">✓ Đã chọn</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <button type="button" class="boi-slider__nav boi-slider__nav--next" id="boi-next" aria-label="Lĩnh vực sau">›</button>
             </div>
+            <div class="boi-slider__dots" id="boi-dots" aria-hidden="true"></div>
           </fieldset>
 
           <p class="boi-error" id="boi-error" role="alert" hidden></p>
 
-          <button type="submit" class="btn btn--primary btn--lg boi-submit">🔮 Xem bói ngay</button>
+          <div class="boi-submit-row">
+            <button type="submit" class="btn btn--primary btn--lg boi-submit">🔮 Xem bói ngay</button>
+            <button type="button" class="btn btn--ghost btn--lg" id="btn-tarot">🃏 Rút bài Tarot</button>
+          </div>
+
+          <!-- Bàn rút bài Tarot (ẩn mặc định) -->
+          <div class="tarot" id="tarot" hidden>
+            <h3 class="tarot__title">🃏 Chọn 3 lá bài định mệnh</h3>
+            <p class="tarot__hint">Chạm vào 3 lá bài úp để lật — Quá khứ · Hiện tại · Tương lai</p>
+            <div class="tarot__deck" id="tarot-deck"></div>
+            <button type="button" class="btn btn--ghost btn--sm" id="btn-tarot-shuffle">🔀 Xào bài lại</button>
+          </div>
         </form>
 
         <!-- Màn hình chờ -->
@@ -213,7 +256,14 @@
           <div class="boi-result__grid" id="res-grid"></div>
           <div class="boi-result__actions">
             <button type="button" class="btn btn--ghost" id="btn-again">🔄 Xem cho người khác</button>
+            <button type="button" class="btn btn--ghost" id="btn-share">📤 Chia sẻ lá số</button>
+            <button type="button" class="btn btn--ghost" id="btn-history">📜 Lịch sử đã xem</button>
             <a href="index.html" class="btn btn--primary">← Về trang chủ</a>
+          </div>
+          <div class="boi-history" id="boi-history" hidden>
+            <h3 class="boi-history__title">📜 Các lần xem gần đây</h3>
+            <ul class="boi-history__list" id="history-list"></ul>
+            <button type="button" class="btn btn--ghost btn--sm" id="btn-clear-history">🗑 Xóa lịch sử</button>
           </div>
         </div>
       </div>
