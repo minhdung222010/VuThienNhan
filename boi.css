@@ -87,33 +87,33 @@ body { overflow: hidden; display: flex; flex-direction: column; }
 .boi-card {
   max-width: 760px;
   margin: 0 auto;
-  padding: 32px;
+  padding: 24px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow-lg);
 }
-.boi-card__title { font-size: 1.5rem; font-weight: 800; }
-.boi-card__hint { color: var(--text-soft); font-size: 14px; margin: 4px 0 22px; }
+.boi-card__title { font-size: 1.4rem; font-weight: 800; }
+.boi-card__hint { color: var(--text-soft); font-size: 13px; margin: 4px 0 16px; }
 .req { color: #ef4d6a; }
 
 .boi-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 14px;
 }
-.boi-field { display: flex; flex-direction: column; gap: 6px; }
+.boi-field { display: flex; flex-direction: column; gap: 5px; }
 .boi-field__label { font-weight: 600; font-size: 14px; }
 .boi-field__note { font-size: 12px; color: var(--text-soft); }
 .boi-field input,
 .boi-field select {
   font-family: inherit;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 10px 12px;
   transition: var(--transition);
 }
 .boi-field input:focus,
@@ -124,20 +124,20 @@ body { overflow: hidden; display: flex; flex-direction: column; }
 }
 
 /* ---------- Chọn lĩnh vực ---------- */
-.boi-areas { border: 0; margin-top: 26px; padding: 0; }
-.boi-areas legend { padding: 0; margin-bottom: 12px; }
+.boi-areas { border: 0; margin-top: 16px; padding: 0; }
+.boi-areas legend { padding: 0; margin-bottom: 10px; }
 .boi-areas__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
 }
 .boi-area input { position: absolute; opacity: 0; pointer-events: none; }
 .boi-area__box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 16px 10px;
+  gap: 4px;
+  padding: 12px 8px;
   border: 1.5px solid var(--border);
   border-radius: 14px;
   background: var(--bg);
@@ -145,8 +145,8 @@ body { overflow: hidden; display: flex; flex-direction: column; }
   transition: var(--transition);
   user-select: none;
 }
-.boi-area__icon { font-size: 26px; }
-.boi-area__name { font-weight: 600; font-size: 14px; }
+.boi-area__icon { font-size: 22px; }
+.boi-area__name { font-weight: 600; font-size: 13px; }
 .boi-area__box:hover { border-color: var(--primary); transform: translateY(-3px); }
 .boi-area input:checked + .boi-area__box {
   border-color: var(--primary);
@@ -159,16 +159,16 @@ body { overflow: hidden; display: flex; flex-direction: column; }
 
 /* ---------- Lỗi & nút gửi ---------- */
 .boi-error {
-  margin-top: 18px;
-  padding: 12px 14px;
+  margin-top: 14px;
+  padding: 10px 14px;
   border-radius: 12px;
   background: rgba(239, 77, 106, 0.1);
   border: 1px solid rgba(239, 77, 106, 0.4);
   color: #ef4d6a;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 }
-.boi-submit { width: 100%; margin-top: 24px; }
+.boi-submit { width: 100%; margin-top: 18px; }
 
 /* ---------- Màn hình chờ ---------- */
 .boi-loading {
@@ -387,6 +387,36 @@ body { overflow: hidden; display: flex; flex-direction: column; }
 .mage .mage-face,
 .mage .mage-head {
   transition: transform 0.08s ease-out;
+}
+
+/* ---------- Máy tính: bố cục 2 cột (nhân vật trái — form phải) ----------
+   Giúp form nhập thông tin hiển thị đầy đủ, vừa màn hình, không cần scroll. */
+@media (min-width: 900px) {
+  .boi { flex-direction: row; }
+  .boi-hero {
+    width: 42%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow: hidden;
+  }
+  .boi-hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .boi-form-section {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 40px;
+  }
+  .boi-card { margin: auto; width: 100%; max-width: 560px; }
+  #boi-loading { margin: auto; max-width: 560px; }
+  #boi-result { margin: auto; max-width: 640px; }
+  .mage { width: min(230px, 26vw); }
 }
 
 /* Tôn trọng thiết lập giảm chuyển động */
