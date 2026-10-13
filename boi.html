@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Xem bói trực tuyến của Thầy bói Vũ Thiện Nhân — nhập tên, ngày sinh và chọn lĩnh vực để xem ngay." />
+  <title>Xem Bói — Thầy Bói Vũ Thiện Nhân</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="boi.css" />
+</head>
+<body class="boi-page">
+  <!-- Nút đổi giao diện (dùng chung style với trang chủ) -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Chuyển đổi giao diện sáng/tối" title="Đổi giao diện">
+    <span class="theme-toggle__icon">🌙</span>
+  </button>
+
+  <!-- Thanh trên của trang bói -->
+  <header class="boi-nav">
+    <div class="container boi-nav__inner">
+      <a href="index.html" class="boi-nav__back">← Về trang chủ</a>
+      <a href="index.html" class="nav__logo">VTN</a>
+    </div>
+  </header>
+
+  <main class="boi">
+    <!-- Tiêu đề -->
+    <section class="boi-hero">
+      <div class="container">
+        <p class="boi-hero__kicker">🔮 Quán bói của Thầy Nhân</p>
+        <h1 class="boi-hero__title">Xem Bói Trực Tuyến</h1>
+        <p class="boi-hero__sub">
+          Nhập thông tin của bạn, chọn lĩnh vực muốn xem, rồi để Thầy "lắc quẻ" cho!
+          Cùng một thông tin sẽ cho ra một lá số cố định — đúng chất nhân tướng học.
+        </p>
+
+        <!-- Nhân vật 3D thầy bói (mắt nhìn theo chuột) -->
+        <div class="mage-wrap" aria-hidden="true">
+          <svg class="mage" viewBox="0 0 260 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Thầy bói 3D">
+            <defs>
+              <radialGradient id="auraG" cx="50%" cy="45%" r="50%">
+                <stop offset="0%" stop-color="#7d94ff" stop-opacity="0.45" />
+                <stop offset="70%" stop-color="#a98bff" stop-opacity="0.12" />
+                <stop offset="100%" stop-color="#a98bff" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="robeG" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#8b7bff" />
+                <stop offset="100%" stop-color="#4a54cf" />
+              </linearGradient>
+              <linearGradient id="hatG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5b4bd6" />
+                <stop offset="100%" stop-color="#2f2a72" />
+              </linearGradient>
+              <radialGradient id="skinG" cx="38%" cy="32%" r="75%">
+                <stop offset="0%" stop-color="#ffe3c9" />
+                <stop offset="60%" stop-color="#f7c9a0" />
+                <stop offset="100%" stop-color="#dfa377" />
+              </radialGradient>
+              <radialGradient id="crystalG" cx="35%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#c9f2ff" />
+                <stop offset="60%" stop-color="#5ac8f5" />
+                <stop offset="100%" stop-color="#2b7fd6" />
+              </radialGradient>
+            </defs>
+
+            <!-- Hào quang -->
+            <circle class="mage-aura" cx="130" cy="150" r="112" fill="url(#auraG)" />
+
+            <!-- Sao lấp lánh -->
+            <g class="mage-sparkles" fill="#ffffff">
+              <circle class="sp sp1" cx="42" cy="92" r="3" />
+              <circle class="sp sp2" cx="222" cy="120" r="2.5" />
+              <circle class="sp sp3" cx="62" cy="222" r="2.5" />
+              <circle class="sp sp4" cx="206" cy="232" r="3" />
+              <circle class="sp sp5" cx="130" cy="42" r="2.5" />
+            </g>
+
+            <!-- Thân áo choàng -->
+            <path d="M70,320 Q62,225 96,176 L164,176 Q198,225 190,320 Q130,334 70,320 Z" fill="url(#robeG)" />
+            <!-- Viền áo vàng -->
+            <path d="M96,176 Q130,198 164,176 L160,188 Q130,210 100,188 Z" fill="#ffe9a8" opacity="0.92" />
+            <!-- Tay cầm quyền trượng -->
+            <path d="M166,198 Q196,214 202,248" stroke="#eab183" stroke-width="15" fill="none" stroke-linecap="round" />
+            <!-- Tay trái đưa ra -->
+            <path d="M94,208 Q76,224 80,246" stroke="#eab183" stroke-width="14" fill="none" stroke-linecap="round" />
+            <circle cx="80" cy="250" r="9.5" fill="#f0b98c" />
+
+            <!-- Quyền trượng -->
+            <g class="mage-staff">
+              <rect x="198" y="150" width="7" height="122" rx="3.5" fill="#7a4a2b" />
+              <circle class="mage-crystal" cx="201" cy="143" r="14" fill="url(#crystalG)" />
+              <path d="M194,272 L208,272" stroke="#7a4a2b" stroke-width="5" stroke-linecap="round" />
+            </g>
+
+            <!-- Đầu & mặt (cả đầu dịch nhẹ theo chuột) -->
+            <g class="mage-head">
+            <ellipse cx="130" cy="118" rx="40" ry="44" fill="url(#skinG)" />
+            <!-- Râu bạc (nghiêng nhẹ theo chuột) -->
+            <g class="mage-face">
+              <path d="M104,138 Q130,214 156,138 Q150,182 130,188 Q110,182 104,138 Z" fill="#f2f4ff" />
+            </g>
+            <!-- Mũ nhọn nhà bói -->
+            <g class="mage-hat">
+              <path d="M86,104 Q88,58 130,34 Q172,58 174,104 Q130,120 86,104 Z" fill="url(#hatG)" />
+              <path d="M83,100 Q130,120 177,100 Q179,112 130,130 Q81,112 83,100 Z" fill="#3a3184" />
+              <path class="mage-hat-star" d="M130,54 l4.5,10 11,1.5 -8,8 2,11 -9.5,-5 -9.5,5 2,-11 -8,-8 11,-1.5 Z" fill="#ffe066" />
+            </g>
+            <!-- Lông mày + mắt + mũi (luôn hiển thị trên cùng, không bị mũ che) -->
+            <g class="mage-eyes">
+              <!-- Lông mày rậm -->
+              <path d="M104,98 Q115,91 126,97" stroke="#f2f4ff" stroke-width="5" fill="none" stroke-linecap="round" />
+              <path d="M136,97 Q147,91 158,98" stroke="#f2f4ff" stroke-width="5" fill="none" stroke-linecap="round" />
+              <!-- Lòng trắng -->
+              <ellipse cx="116" cy="112" rx="9" ry="10" fill="#ffffff" />
+              <ellipse cx="146" cy="112" rx="9" ry="10" fill="#ffffff" />
+              <!-- Con ngươi nhìn theo chuột -->
+              <g class="mage-pupil" id="mage-pupil-left">
+                <circle cx="117" cy="113" r="5" fill="#2a2a35" />
+                <circle cx="119" cy="111" r="1.7" fill="#ffffff" />
+              </g>
+              <g class="mage-pupil" id="mage-pupil-right">
+                <circle cx="145" cy="113" r="5" fill="#2a2a35" />
+                <circle cx="147" cy="111" r="1.7" fill="#ffffff" />
+              </g>
+              <!-- Mí mắt trên -->
+              <path d="M107,108 Q116,100 125,108" stroke="#3a3184" stroke-width="2.8" fill="none" stroke-linecap="round" />
+              <path d="M137,108 Q146,100 155,108" stroke="#3a3184" stroke-width="2.8" fill="none" stroke-linecap="round" />
+              <!-- Mũi -->
+              <path d="M130,116 Q134,127 128,128" stroke="#d79a72" stroke-width="2.6" fill="none" stroke-linecap="round" />
+            </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form nhập thông tin -->
+    <section class="boi-form-section">
+      <div class="container">
+        <form id="boi-form" class="boi-card" novalidate>
+          <h2 class="boi-card__title">Thông tin của bạn</h2>
+          <p class="boi-card__hint">Các ô có dấu <span class="req">*</span> là bắt buộc.</p>
+
+          <div class="boi-grid">
+            <label class="boi-field">
+              <span class="boi-field__label">Họ và tên <span class="req">*</span></span>
+              <input type="text" id="inp-name" name="name" placeholder="Ví dụ: Nguyễn Văn A" autocomplete="name" />
+            </label>
+
+            <label class="boi-field">
+              <span class="boi-field__label">Ngày sinh <span class="req">*</span></span>
+              <input type="date" id="inp-birth" name="birth" />
+            </label>
+
+            <label class="boi-field">
+              <span class="boi-field__label">Giờ sinh</span>
+              <input type="time" id="inp-time" name="time" />
+              <span class="boi-field__note">Không nhớ thì bỏ trống, Thầy vẫn xem được.</span>
+            </label>
+
+            <label class="boi-field">
+              <span class="boi-field__label">Giới tính</span>
+              <select id="inp-gender" name="gender">
+                <option value="khac">Không muốn nói</option>
+                <option value="nam">Nam</option>
+                <option value="nu">Nữ</option>
+              </select>
+            </label>
+          </div>
+
+          <fieldset class="boi-areas">
+            <legend class="boi-field__label">Chọn lĩnh vực muốn xem <span class="req">*</span></legend>
+            <div class="boi-areas__grid">
+              <label class="boi-area">
+                <input type="checkbox" name="area" value="tinh-duyen" />
+                <span class="boi-area__box"><span class="boi-area__icon">💕</span><span class="boi-area__name">Tình duyên</span></span>
+              </label>
+              <label class="boi-area">
+                <input type="checkbox" name="area" value="su-nghiep" />
+                <span class="boi-area__box"><span class="boi-area__icon">💼</span><span class="boi-area__name">Sự nghiệp</span></span>
+              </label>
+              <label class="boi-area">
+                <input type="checkbox" name="area" value="duong-doi" />
+                <span class="boi-area__box"><span class="boi-area__icon">🛤️</span><span class="boi-area__name">Đường đời</span></span>
+              </label>
+              <label class="boi-area">
+                <input type="checkbox" name="area" value="tai-loc" />
+                <span class="boi-area__box"><span class="boi-area__icon">💰</span><span class="boi-area__name">Tài lộc</span></span>
+              </label>
+              <label class="boi-area">
+                <input type="checkbox" name="area" value="suc-khoe" />
+                <span class="boi-area__box"><span class="boi-area__icon">🌿</span><span class="boi-area__name">Sức khỏe</span></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <p class="boi-error" id="boi-error" role="alert" hidden></p>
+
+          <button type="submit" class="btn btn--primary btn--lg boi-submit">🔮 Xem bói ngay</button>
+        </form>
+
+        <!-- Màn hình chờ -->
+        <div id="boi-loading" class="boi-loading" hidden>
+          <div class="boi-crystal">🔮</div>
+          <p class="boi-loading__text" id="boi-loading-text">Thầy đang lắc quẻ…</p>
+        </div>
+
+        <!-- Kết quả -->
+        <div id="boi-result" class="boi-result" hidden>
+          <div class="boi-result__head">
+            <h2 class="boi-result__title">Lá số của <span id="res-name"></span></h2>
+            <p class="boi-result__meta" id="res-meta"></p>
+          </div>
+          <div class="boi-result__summary" id="res-summary"></div>
+          <div class="boi-result__grid" id="res-grid"></div>
+          <div class="boi-result__actions">
+            <button type="button" class="btn btn--ghost" id="btn-again">🔄 Xem cho người khác</button>
+            <a href="index.html" class="btn btn--primary">← Về trang chủ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Thầy Bói Vũ Thiện Nhân. Kết quả mang tính vui — đừng quá tin nhé! 🔮</p>
+      <a href="index.html" class="footer__top">Về trang chủ ↑</a>
+    </div>
+  </footer>
+
+  <script src="boi.js"></script>
+</body>
+</html>
+

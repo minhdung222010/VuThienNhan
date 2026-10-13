@@ -1,0 +1,14 @@
+# File tạm khi push / cài đặt
+winget-log.txt
+winget-out.txt
+winget-err.txt
+winget-log*
+*.log
+
+# File hệ thống
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Thư mục cài đặt công cụ (MinGit, download) nếu lỡ nằm trong repo
+/git-tools/

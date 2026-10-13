@@ -1,0 +1,403 @@
+/* ============================================================
+   Trang Xem Bói — bổ sung cho trang chủ (styles.css)
+   Tái dụng các biến màu :root đã định nghĩa ở styles.css
+   ============================================================ */
+
+/* Không cho toàn trang cuộn — trang bói vừa màn hình.
+   Header & footer cố định; main.boi chiếm phần còn lại và tự cuộn nội bộ. */
+html, body { height: 100%; }
+body { overflow: hidden; display: flex; flex-direction: column; }
+.boi-nav { flex-shrink: 0; }
+.boi {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.boi-hero { flex-shrink: 0; }
+/* Vùng form tự cuộn nội bộ nếu nội dung dài hơn màn hình */
+.boi-form-section {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.footer { flex-shrink: 0; }
+
+/* Thu gọn footer cho vừa màn hình trang bói */
+.boi-page .footer { padding: 10px 0; }
+.boi-page .footer__inner { font-size: 13px; }
+
+
+.boi-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.boi-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.boi-nav__back {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--primary);
+  padding: 8px 4px;
+  transition: var(--transition);
+}
+.boi-nav__back:hover { transform: translateX(-3px); }
+
+/* ---------- Tiêu đề trang ---------- */
+.boi-hero {
+  text-align: center;
+  padding: 22px 0 8px;
+  background:
+    radial-gradient(700px 360px at 80% 0%, var(--primary-soft), transparent 65%),
+    radial-gradient(600px 320px at 10% 20%, rgba(124, 92, 240, 0.1), transparent 60%);
+}
+.boi-hero__kicker {
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.boi-hero__title {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
+  margin: 4px 0 6px;
+  background: linear-gradient(120deg, var(--primary), var(--primary-2) 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.boi-hero__sub {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+/* ---------- Form ---------- */
+.boi-form-section { padding: 12px 0 24px; }
+.boi-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+.boi-card__title { font-size: 1.5rem; font-weight: 800; }
+.boi-card__hint { color: var(--text-soft); font-size: 14px; margin: 4px 0 22px; }
+.req { color: #ef4d6a; }
+
+.boi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.boi-field { display: flex; flex-direction: column; gap: 6px; }
+.boi-field__label { font-weight: 600; font-size: 14px; }
+.boi-field__note { font-size: 12px; color: var(--text-soft); }
+.boi-field input,
+.boi-field select {
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: var(--transition);
+}
+.boi-field input:focus,
+.boi-field select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+/* ---------- Chọn lĩnh vực ---------- */
+.boi-areas { border: 0; margin-top: 26px; padding: 0; }
+.boi-areas legend { padding: 0; margin-bottom: 12px; }
+.boi-areas__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+.boi-area input { position: absolute; opacity: 0; pointer-events: none; }
+.boi-area__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg);
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+.boi-area__icon { font-size: 26px; }
+.boi-area__name { font-weight: 600; font-size: 14px; }
+.boi-area__box:hover { border-color: var(--primary); transform: translateY(-3px); }
+.boi-area input:checked + .boi-area__box {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  box-shadow: 0 8px 20px var(--primary-soft);
+}
+.boi-area input:focus-visible + .boi-area__box {
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+/* ---------- Lỗi & nút gửi ---------- */
+.boi-error {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(239, 77, 106, 0.1);
+  border: 1px solid rgba(239, 77, 106, 0.4);
+  color: #ef4d6a;
+  font-size: 14px;
+  font-weight: 500;
+}
+.boi-submit { width: 100%; margin-top: 24px; }
+
+/* ---------- Màn hình chờ ---------- */
+.boi-loading {
+  max-width: 760px;
+  margin: 24px auto 0;
+  padding: 48px 32px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.boi-crystal {
+  font-size: 64px;
+  animation: boiShake 1.2s ease-in-out infinite, boiGlow 1.6s ease-in-out infinite;
+}
+@keyframes boiShake {
+  0%, 100% { transform: rotate(-8deg) translateY(0); }
+  25% { transform: rotate(10deg) translateY(-6px); }
+  50% { transform: rotate(-6deg) translateY(0); }
+  75% { transform: rotate(8deg) translateY(-4px); }
+}
+@keyframes boiGlow {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(125,148,255,0)); }
+  50% { filter: drop-shadow(0 0 22px var(--primary)); }
+}
+.boi-loading__text {
+  margin-top: 18px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+/* ---------- Kết quả ---------- */
+.boi-result {
+  max-width: 860px;
+  margin: 24px auto 0;
+  animation: boiFadeUp 0.6s ease both;
+}
+@keyframes boiFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+.boi-result__head { text-align: center; margin-bottom: 22px; }
+.boi-result__title { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 800; }
+.boi-result__meta { color: var(--text-soft); margin-top: 6px; font-size: 15px; }
+.boi-result__summary {
+  padding: 20px 22px;
+  margin-bottom: 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  line-height: 1.8;
+}
+.boi-result__summary strong { color: var(--primary); }
+
+.boi-result__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.boi-item {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  animation: boiItemIn 0.5s ease both;
+}
+.boi-result__grid .boi-item:nth-child(2) { animation-delay: 0.08s; }
+.boi-result__grid .boi-item:nth-child(3) { animation-delay: 0.16s; }
+.boi-result__grid .boi-item:nth-child(4) { animation-delay: 0.24s; }
+.boi-result__grid .boi-item:nth-child(5) { animation-delay: 0.32s; }
+@keyframes boiItemIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+.boi-item:hover { transform: translateY(-5px); border-color: var(--primary); }
+.boi-item__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.boi-item__name { display: flex; align-items: center; gap: 8px; font-size: 1.15rem; font-weight: 700; }
+.boi-item__score {
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+.boi-item__bar {
+  height: 10px;
+  border-radius: 8px;
+  background: var(--border);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.boi-item__fill {
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.boi-item__text { color: var(--text-soft); font-size: 15px; line-height: 1.8; }
+.boi-item__lucky {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-size: 13px;
+  color: var(--text-soft);
+}
+.boi-item__lucky b { color: var(--text); }
+
+.boi-result__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .boi-grid { grid-template-columns: 1fr; }
+  .boi-card { padding: 22px; }
+  .boi-hero { padding: 40px 0 16px; }
+}
+
+/* Tôn trọng thiết lập giảm chuyển động */
+@media (prefers-reduced-motion: reduce) {
+  .boi-crystal { animation: none; }
+  .boi-result { animation: none; }
+}
+
+
+/* ============================================================
+   Nhân vật 3D thầy bói (hoạt ảnh)
+   ============================================================ */
+.mage-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 8px auto 0;
+  padding: 4px 0 8px;
+}
+.mage {
+  width: min(190px, 46vw);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 26px rgba(31, 45, 74, 0.28));
+  animation: mageFloat 5s ease-in-out infinite;
+}
+/* Cả khối nhân vật lơ lửng nhẹ */
+@keyframes mageFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Hào quang nhịp đập */
+.mage-aura {
+  transform-origin: 130px 150px;
+  animation: mageAura 3.2s ease-in-out infinite;
+}
+@keyframes mageAura {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+/* Sao lấp lánh */
+.mage-sparkles .sp {
+  animation: mageTwinkle 2.4s ease-in-out infinite;
+}
+.mage-sparkles .sp2 { animation-delay: 0.4s; }
+.mage-sparkles .sp3 { animation-delay: 0.8s; }
+.mage-sparkles .sp4 { animation-delay: 1.2s; }
+.mage-sparkles .sp5 { animation-delay: 1.6s; }
+@keyframes mageTwinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+/* Pha lê quyền trượng phát sáng */
+.mage-crystal {
+  transform-origin: 201px 143px;
+  animation: mageCrystal 2s ease-in-out infinite;
+}
+@keyframes mageCrystal {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(90, 200, 245, 0.6)); }
+  50% { filter: drop-shadow(0 0 14px rgba(90, 200, 245, 0.95)); }
+}
+
+/* Ngôi sao trên mũ xoay nhẹ */
+.mage-hat-star {
+  transform-origin: 130px 68px;
+  animation: mageStarSpin 6s ease-in-out infinite;
+}
+@keyframes mageStarSpin {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(14deg) scale(1.15); }
+}
+
+/* Quyền trượng đung đưa nhẹ */
+.mage-staff {
+  transform-origin: 201px 272px;
+  animation: mageStaffSway 4.4s ease-in-out infinite;
+}
+@keyframes mageStaffSway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* Mắt, mặt & đầu (dịch chuyển theo chuột do JS điều khiển transform) */
+.mage .mage-pupil,
+.mage .mage-face,
+.mage .mage-head {
+  transition: transform 0.08s ease-out;
+}
+
+/* Tôn trọng thiết lập giảm chuyển động */
+@media (prefers-reduced-motion: reduce) {
+  .mage,
+  .mage-aura,
+  .mage-sparkles .sp,
+  .mage-crystal,
+  .mage-hat-star,
+  .mage-staff,
+  .boi-item,
+  .boi-result { animation: none !important; }
+}
+

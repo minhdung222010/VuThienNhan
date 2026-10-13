@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trang giới thiệu Thầy bói Vũ Thiện Nhân — xem chỉ tay, bói bài Tarot và luận giải tử vi trọn đời." />
+  <title>Thầy Bói Vũ Thiện Nhân — Xem Tướng &amp; Luận Vận</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Nút bật/tắt giao diện tối -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Chuyển đổi giao diện sáng/tối" title="Đổi giao diện">
+    <span class="theme-toggle__icon">🌙</span>
+  </button>
+
+  <!-- Thanh điều hướng -->
+  <header class="navbar" id="navbar">
+    <nav class="nav container">
+      <a href="#home" class="nav__logo">VTN</a>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#home" class="nav__link">Trang chủ</a></li>
+        <li><a href="#about" class="nav__link">Giới thiệu</a></li>
+        <li><a href="#skills" class="nav__link">Kỹ năng</a></li>
+        <li><a href="#timeline" class="nav__link">Hành trình</a></li>
+        <li><a href="#projects" class="nav__link">Dự án</a></li>
+        <li><a href="#contact" class="nav__link">Liên hệ</a></li>
+      </ul>
+      <button class="nav__burger" id="nav-burger" aria-label="Mở menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== PHẦN ĐẦU (HERO) ===== -->
+    <section class="hero" id="home">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="hero__greeting reveal">Xin chào, mình là</p>
+          <!-- ✏️ Thay "Vũ Thiện Nhân" bằng tên của bạn -->
+          <h1 class="hero__name reveal">Vũ Thiện Nhân</h1>
+          <!-- ✏️ Thay dòng mô tả nghề nghiệp bên dưới -->
+          <h2 class="hero__role reveal">Thầy Bói &amp; Chuyên Gia Tử Vi</h2>
+          <p class="hero__desc reveal">
+            Mình xem tướng, bói bài, giải đoán vận mệnh bằng quyền năng tâm linh.
+            Ghé ngôi nhà nhỏ này để cùng nhau "kha khá" về đường công danh, tình duyên!
+          </p>
+          <div class="hero__actions reveal">
+            <a href="boi.html" class="btn btn--primary">🔮 Xem bói ngay</a>
+            <a href="#about" class="btn btn--ghost">Tìm hiểu thêm</a>
+          </div>
+          <div class="hero__socials reveal">
+            <!-- ✏️ Thay các liên kết mạng xã hâm bằng link thật của bạn -->
+            <a href="#" class="social" aria-label="Facebook" title="Facebook">f</a>
+            <a href="#" class="social" aria-label="GitHub" title="GitHub">GitHub</a>
+            <a href="#" class="social" aria-label="Email" title="Email">✉</a>
+          </div>
+        </div>
+        <div class="hero__visual reveal">
+          <div class="hero__avatar">
+            <!-- ✏️ Avatar nhân vật 3D (SVG). Có thể thay bằng ảnh của bạn: <img src="anh-cua-ban.jpg" alt="Vũ Thiện Nhân"> -->
+            <svg class="hero__avatar-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar 3D của Vũ Thiện Nhân" width="100%" height="100%">
+              <defs>
+                <radialGradient id="skin3d" cx="35%" cy="30%" r="78%">
+                  <stop offset="0%" stop-color="#ffe3c9" />
+                  <stop offset="58%" stop-color="#f7c9a0" />
+                  <stop offset="100%" stop-color="#dfa377" />
+                </radialGradient>
+                <linearGradient id="hair3d" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3c3c50" />
+                  <stop offset="100%" stop-color="#1a1a26" />
+                </linearGradient>
+                <linearGradient id="shirt3d" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#7b8bff" />
+                  <stop offset="100%" stop-color="#4854cf" />
+                </linearGradient>
+                <linearGradient id="collar3d" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="100%" stop-color="#dfe4ff" />
+                </linearGradient>
+              </defs>
+
+              <!-- Vai & áo -->
+              <path d="M26,200 C30,160 60,140 100,140 C140,140 170,160 174,200 Z" fill="url(#shirt3d)" />
+              <!-- Cổ áo -->
+              <path d="M82,141 C88,153 112,153 118,141 L118,147 C112,159 88,159 82,147 Z" fill="url(#collar3d)" />
+              <!-- Cổ -->
+              <path d="M84,130 h32 v16 a16 14 0 0 1 -32 0 Z" fill="#eab183" />
+              <ellipse cx="100" cy="142" rx="22" ry="7" fill="#000" opacity="0.12" />
+
+              <!-- Đầu tóc đầy (phần sau) -->
+              <ellipse cx="100" cy="86" rx="53" ry="56" fill="url(#hair3d)" />
+              <!-- Khuôn mặt (da) -->
+              <path d="M55,100 C57,74 76,63 100,63 C124,63 143,74 145,100 C145,128 125,150 100,150 C75,150 55,128 55,100 Z" fill="url(#skin3d)" />
+              <!-- Tai -->
+              <ellipse cx="54" cy="104" rx="9" ry="13" fill="#f0b98c" />
+              <ellipse cx="146" cy="104" rx="9" ry="13" fill="#f0b98c" />
+              <!-- Vành tóc mai -->
+              <path d="M50,104 C48,74 62,60 82,58 C68,66 60,80 60,100 C60,110 62,118 66,124 C58,120 52,114 50,104 Z" fill="url(#hair3d)" />
+              <path d="M150,104 C152,74 138,60 118,58 C132,66 140,80 140,100 C140,110 138,118 134,124 C142,120 148,114 150,104 Z" fill="url(#hair3d)" />
+
+              <!-- Nhóm nét mặt nghiêng nhẹ theo chuột -->
+              <g class="face-lean">
+                <!-- Lông mày -->
+                <path d="M73,86 Q82,79 92,85" stroke="#2b2530" stroke-width="3.5" fill="none" stroke-linecap="round" />
+                <path d="M108,85 Q118,79 127,86" stroke="#2b2530" stroke-width="3.5" fill="none" stroke-linecap="round" />
+                <!-- Mũi -->
+                <path d="M100,104 Q104,117 98,118" stroke="#d79a72" stroke-width="3" fill="none" stroke-linecap="round" />
+                <!-- Má hồng -->
+                <ellipse cx="72" cy="116" rx="9" ry="6" fill="#ff93a0" opacity="0.45" />
+                <ellipse cx="128" cy="116" rx="9" ry="6" fill="#ff93a0" opacity="0.45" />
+                <!-- Miệng cười -->
+                <path d="M87,127 Q100,139 113,127" stroke="#c66b6b" stroke-width="3.6" fill="none" stroke-linecap="round" />
+              </g>
+              <!-- Mắt: lòng trắng cố định, con ngươi di chuyển theo chuột -->
+              <ellipse cx="83" cy="101" rx="8" ry="9" fill="#ffffff" />
+              <ellipse cx="117" cy="101" rx="8" ry="9" fill="#ffffff" />
+              <g class="pupil" id="pupil-left">
+                <circle cx="84" cy="102" r="4.6" fill="#2a2a35" />
+                <circle cx="86" cy="100" r="1.7" fill="#ffffff" />
+              </g>
+              <g class="pupil" id="pupil-right">
+                <circle cx="116" cy="102" r="4.6" fill="#2a2a35" />
+                <circle cx="118" cy="100" r="1.7" fill="#ffffff" />
+              </g>
+              <!-- Highlight trán/tóc -->
+              <ellipse cx="86" cy="56" rx="20" ry="11" fill="#ffffff" opacity="0.14" />
+            </svg>
+          </div>
+          <div class="hero__blob hero__blob--1"></div>
+          <div class="hero__blob hero__blob--2"></div>
+        </div>
+      </div>
+      <a href="#about" class="hero__scroll" aria-label="Cuộn xuống">
+        <span class="hero__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ===== GIỚI THIỆU ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section__title reveal"><span>01.</span> Giới thiệu</h2>
+        <div class="about">
+          <div class="about__text reveal">
+            <p>
+              Chào bạn! Mình là <strong>Vũ Thiện Nhân</strong>. Mình là thầy bói
+              lão luyện, nhìn tướng là biễn số, bói một lá bài là thấu tam thập lục vạn linh.
+            </p>
+            <p>
+              Ngoài nghề xem bói, mình thích đọc sách, nghe nhạc và ngẫm nghĩ về
+              nhân sinh. Hãy đến đây, để mình cùng bạn "gỡ rối" tơ duyên, đường công danh!
+            </p>
+            <ul class="about__facts">
+              <li><span>🔮</span> <strong>Nghề nghiệp:</strong> Thầy bói toàn năng</li>
+              <li><span>📍</span> <strong>Địa điểm:</strong> Góc phố có bóng cây cổ thụ</li>
+              <li><span>📜</span> <strong>Học vấn:</strong> Bát tự · Tử vi · Nhân tướng</li>
+              <li><span>🎴</span> <strong>Sở thích:</strong> Bói bài, xem chỉ tay, đọc sách</li>
+            </ul>
+          </div>
+          <div class="about__card reveal">
+            <div class="about__stat"><span class="about__stat-num" data-count="10">0</span><span class="about__stat-label">Dự án</span></div>
+            <div class="about__stat"><span class="about__stat-num" data-count="5">0</span><span class="about__stat-label">Năm kinh nghiệm</span></div>
+            <div class="about__stat"><span class="about__stat-num" data-count="20">0</span><span class="about__stat-label">Khóa học</span></div>
+            <div class="about__stat"><span class="about__stat-num" data-count="100">0</span><span class="about__stat-label">Kết nối</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KỸ NĂNG ===== -->
+    <section class="section section--alt" id="skills">
+      <div class="container">
+        <h2 class="section__title reveal"><span>02.</span> Tuyệt kỹ</h2>
+        <p class="section__subtitle reveal">Các "công phu" mình đã luyện thành trong nghề xem bói.</p>
+        <div class="skills">
+          <!-- ✏️ Thay đổi tên tuyệt kỹ và mức độ (%) cho phù hợp với bạn -->
+          <div class="skill reveal"><div class="skill__head"><span>Xem chỉ tay</span><span>98%</span></div><div class="skill__bar"><div class="skill__fill" style="--w:98%"></div></div></div>
+          <div class="skill reveal"><div class="skill__head"><span>Bói bài Tarot</span><span>92%</span></div><div class="skill__bar"><div class="skill__fill" style="--w:92%"></div></div></div>
+          <div class="skill reveal"><div class="skill__head"><span>Luận giải tử vi</span><span>88%</span></div><div class="skill__bar"><div class="skill__fill" style="--w:88%"></div></div></div>
+          <div class="skill reveal"><div class="skill__head"><span>Phân tích tướng mặt</span><span>85%</span></div><div class="skill__bar"><div class="skill__fill" style="--w:85%"></div></div></div>
+          <div class="skill reveal"><div class="skill__head"><span>Nắm bắt tâm lý</span><span>95%</span></div><div class="skill__bar"><div class="skill__fill" style="--w:95%"></div></div></div>
+          <div class="skill reveal"><div class="skill__head"><span>Ăn nói có duyên</span><span>99%</span></div><div class="skill__bar"><div class="skill__fill" style="--w:99%"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== HÀNH TRÌNH (TIMELINE) ===== -->
+    <section class="section" id="timeline">
+      <div class="container">
+        <h2 class="section__title reveal"><span>03.</span> Hành trình</h2>
+        <div class="timeline">
+          <!-- ✏️ Thay đổi nội dung các mốc thời gian cho đúng với bạn -->
+          <div class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__date">Năm 2000</span>
+              <h3 class="timeline__title">Khai tâm nhập đạo</h3>
+              <p class="timeline__desc">Được sư phụ truyền cho cuốn "Thiên cơ bát tự" và chén thủy tinh nhìn cầu vồng.</p>
+            </div>
+          </div>
+          <div class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__date">Năm 2010</span>
+              <h3 class="timeline__title">Mở quán bói đầu tiên</h3>
+              <p class="timeline__desc">Dựng tạm quán dưới gốc cây bàng, ngày đầu tiên đã có 3 khách đến xin xăm.</p>
+            </div>
+          </div>
+          <div class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__date">Năm 2020</span>
+              <h3 class="timeline__title">Danh tiếng vang xa</h3>
+              <p class="timeline__desc">Đoán đúng cả "trúng số" lẫn "chia tay", khách xếp hàng từ tỉnh lân bang.</p>
+            </div>
+          </div>
+          <div class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__date">Hiện tại</span>
+              <h3 class="timeline__title">Online xem bói 4.0</h3>
+              <p class="timeline__desc">Nhận bói qua mạng, chỉ cần gửi ảnh chân dung là biết tuổi, công danh lẫn số đo giày.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== DỊCH VỤ ===== -->
+    <section class="section section--alt" id="projects">
+      <div class="container">
+        <h2 class="section__title reveal"><span>04.</span> Dịch vụ</h2>
+        <p class="section__subtitle reveal">Các "gói xăm" được khách hàng tin dùng nhất tại quán.</p>
+        <div class="projects">
+          <!-- ✏️ Thay thế bằng dịch vụ thật của bạn -->
+          <article class="project reveal">
+            <div class="project__top">
+              <span class="project__icon">🔮</span>
+              <div class="project__links"><a href="boi.html?area=tinh-duyen" title="Xem ngay">Xem ngay</a></div>
+            </div>
+            <h3 class="project__title">Bói Bài Tarot</h3>
+            <p class="project__desc">Trải bài 12 lá, luận giải chi tiết về tình duyên, công việc và vận trình 3 tháng tới.</p>
+            <div class="project__tags"><span>Tình duyên</span><span>Sự nghiệp</span><span>Tarot</span></div>
+          </article>
+          <article class="project reveal">
+            <div class="project__top">
+              <span class="project__icon">🖐️</span>
+              <div class="project__links"><a href="boi.html?area=su-nghiep" title="Xem ngay">Xem ngay</a></div>
+            </div>
+            <h3 class="project__title">Xem Chỉ Tay</h3>
+            <p class="project__desc">Đọc đường tâm đạo, đường sinh đạo và đường trí đạo — biết trước quý nhân, tiểu nhân rình rập.</p>
+            <div class="project__tags"><span>Nhân tướng</span><span>Chỉ tay</span></div>
+          </article>
+          <article class="project reveal">
+            <div class="project__top">
+              <span class="project__icon">📜</span>
+              <div class="project__links"><a href="boi.html?area=duong-doi" title="Xem ngay">Xem ngay</a></div>
+            </div>
+            <h3 class="project__title">Luận Tử Vi Trọn Đời</h3>
+            <p class="project__desc">Lập lá số tử vi theo giờ sinh, phân tích cung mệnh, tài bạch và phu thê cả một đời người.</p>
+            <div class="project__tags"><span>Tử vi</span><span>Bát tự</span><span>Vận mệnh</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LIÊN HỆ ===== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="section__title reveal"><span>05.</span> Liên hệ</h2>
+        <div class="contact reveal">
+          <p class="contact__lead">
+            Đang phân vân về duyên phận hay chọn hướng đi?
+            Hãy đến quán, mình xem giúp bạn — sai, hoàn tiền kèm lời xin lỗi!
+          </p>
+          <a href="boi.html" class="btn btn--primary btn--lg">🔮 Vào xem bói ngay</a>
+          <div class="contact__info">
+            <!-- ✏️ Thay bằng thông tin liên hệ thật của bạn -->
+            <div class="contact__item"><span>📧</span> email@example.com</div>
+            <div class="contact__item"><span>📱</span> 0xxx xxx xxx</div>
+            <div class="contact__item"><span>📍</span> Gốc cây bàng, đầu làng</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Thầy Bói Vũ Thiện Nhân. Vận mệnh nằm trong tay bạn… và cả trong tay tôi nữa! 🔮</p>
+      <a href="#home" class="footer__top">Về đầu trang ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
